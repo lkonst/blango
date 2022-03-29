@@ -1,0 +1,13 @@
+
+
+
+<h4> {{ title }} </h4>
+<ul>
+
+  {% for post in posts %}
+
+    <li> <a href="{% url "blog-post-detail" post.slug %}"> Read more </a> </li>
+
+  {% endfor %}
+
+</ul>
