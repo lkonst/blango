@@ -97,4 +97,4 @@ def endcol():
 @register.inclusion_tag("blog/post-list.html")
 def recent_posts(post):
   posts = Post.objects.exclude(pk=post.pk)[:4]
-  return {'title': 'Recents Posts', 'posts': posts}
+  return {"title": "Recents Posts", "posts": posts}
