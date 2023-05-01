@@ -15,7 +15,7 @@ from pathlib import Path
 from configurations import Configuration
 from configurations import values
 import dj_database_url
-
+from django.contrib.auth.hashers import Argon2PasswordHasher
 
 class Dev(Configuration):
     #SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
@@ -208,7 +208,7 @@ class Dev(Configuration):
     DJANGO_ADMINS="Ben Shaw,ben@example.com;Leo Lucio,leo@example.com"
 
     PASSWORD_HASHERS = [
-    'django.contrib.auth.hashers.Argon2PasswordHasher'
+    #'django.contrib.auth.hashers.Argon2PasswordHasher'
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
     #'django.contrib.auth.hashers.Argon2PasswordHasher',
