@@ -21,6 +21,17 @@ def index(request):
   # return HttpResponse(str(request.user).encode("ascii"))
   posts = Post.objects.filter(published_at__lte=timezone.now())
   logger.debug("Got %d posts", len(posts))
+  # posts = (
+  #   Post.objects.filter(published_at__lte=timezone.now())
+  #   .select_related("author")
+  #   .only("title", "summary", "content", "author", "published_at", "slug")
+  # )
+  # posts = (
+  #   Post.objects.filter(published_at__lte=timezone.now())
+  #   .select_related("author")
+  #   .defer("created_at", "modified_at")
+  # )
+  posts = Post.objects.filter(published_at__lte=timezone.now()).select_related("author")
   return render(request, "blog/index.html", {"posts":posts})
   # return render(request, "blog/index.html")
 
@@ -48,3 +59,7 @@ def post_detail(request, slug):
     comment_form = None
   return render(request, "blog/post-detail.html", {"post":post, "comment_form":comment_form})
   #return render(request, "blog/post-detail.html", {"post": post})
+
+def get_ip(request):
+  from django.http import HttpResponse
+  return HttpResponse(request.META['REMOTE_ADDR'])
