@@ -19,6 +19,10 @@ from django.contrib.auth.hashers import Argon2PasswordHasher
 
 class Dev(Configuration):
 
+  EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+  ACCOUNT_ACTIVATION_DAYS = 7
+  # REGISTRATION_OPEN = False
+
   AUTH_USER_MODEL = 'blango_auth.User'
   #SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
