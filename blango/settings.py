@@ -73,8 +73,16 @@ class Dev(Configuration):
       'allauth.socialaccount.providers.google',
       'rest_framework',
       'rest_framework.authtoken',
+      'drf_yasg',
 
     ]
+  
+  SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+          "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+          "Basic": {"type": "basic"},
+    }
+  }
 
   REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
