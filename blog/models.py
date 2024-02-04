@@ -7,10 +7,14 @@ from django.contrib.contenttypes.fields import GenericRelation
 
 
 class Tag(models.Model):
-    # value = models.TextField(max_length=100)
-    value = models.TextField(max_length=100, unique=True)
-    def __str__(self):
-        return self.value
+
+  class Meta:
+    ordering = ["value"]
+
+  # value = models.TextField(max_length=100)
+  value = models.TextField(max_length=100, unique=True)
+  def __str__(self):
+      return self.value
 
 class Comment(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
