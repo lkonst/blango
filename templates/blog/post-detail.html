@@ -12,6 +12,14 @@
       </div>
   {% endrow %}
 
+  {% if post.hero_image %}
+    {% row %}
+      {% col %}
+        <img class="img-fluid" src="{{ post.hero_image }}">
+      {% endcol %}
+    {% endrow %}
+  {% endif %}
+  
   {% row %}
     <div class="col">
       {{ post.content|safe }}
